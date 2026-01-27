@@ -169,8 +169,10 @@ def main() -> None:
     }
 
     hook = PreNormHook()
-    # handle = model.model.norm.register_forward_hook(hook)
-    handle = model.model.layers[last_layer_id].post_attention_layernorm.register_forward_hook(hook)
+    if args.model_key == "aya23-8b":
+        handle = model.model.norm.register_forward_hook(hook)
+    else:
+        handle = model.model.layers[last_layer_id].post_attention_layernorm.register_forward_hook(hook)
 
     try:
         # Sample shared indices once (use English split length as reference).
