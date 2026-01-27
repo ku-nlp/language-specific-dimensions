@@ -9,7 +9,27 @@ This repo provides:
 - a playground notebook for qualitative case studies.
 
 ---
+## Environment
 
+The code is tested with the following key dependencies:
+
+- Python == 3.12.9
+- PyTorch == 2.6.0+cu124
+- transformers == 4.51.3
+- sacrebleu == 2.5.1
+- datasets == 3.5.0
+- fastText
+  
+  Used for language identification in evaluation.  
+  Repository:
+  https://github.com/facebookresearch/fastText
+
+- repeng
+  
+  Used for representation-level interventions in Transformer models.  
+  Repository:
+  https://github.com/vgel/repeng
+---
 ## Step 1: Extract average representations (FLORES-200 dev)
 
 `extract.py` records the average internal representations of the model for each language and each layer. Sentences are from Flore200 dev split.
@@ -21,7 +41,7 @@ python extract.py \
   --num_samples 50 \
   --output_path outputs/flores_hidden_stats_llama2_7b_50.json
 ```
-
+---
 ## Step 2: Main experiments (English → target language)
 
 `control_en2x.py` runs the main experiments in the paper.
@@ -58,6 +78,7 @@ python control_en2x.py \
 ```
 Note: anchor_layer is only effective in the monolingual (mono) setting.
 
+---
 ## Step 3: Evaluate grid search results
 
 Open `compute_bleu.ipynb` and run all cells to:
@@ -66,7 +87,7 @@ Open `compute_bleu.ipynb` and run all cells to:
 - aggregate results over **(intervention layer, scaling coefficient)** and report  
   **ACC / BLEU (success-only) / ACC × BLEU**.
 
-
+---
 
 ## Playground (case studies)
 
