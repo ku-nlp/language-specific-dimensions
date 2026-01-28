@@ -32,7 +32,7 @@ The code is tested with the following key dependencies:
 ---
 ## Step 1: Extract average representations (FLORES-200 dev)
 
-`extract.py` records the average internal representations of the model for each language and each layer. Sentences are from Flore200 dev split.
+`extract.py` records the average internal representations of the model for each language and each layer. Sentences are from FLORES-200 dev split.
 
 Example:
 ```bash
